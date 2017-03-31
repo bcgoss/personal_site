@@ -5,8 +5,12 @@ describe 'Landing Page' do
     it 'can see links to public content' do
       visit root_path
 
-      expect(page).to have_link 'Blog posts'
-      expect(page).to have_link 'Projects'
+      click_link 'Blog posts'
+      expect(page).to have_content 'First Post'
+      
+      visit root_path
+      click_link 'Projects'
+      expect(page).to have_content 'Project 1' 
     end
   end
 end
