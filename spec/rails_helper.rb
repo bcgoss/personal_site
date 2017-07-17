@@ -57,4 +57,14 @@ RSpec.configure do |config|
 
   # Configure factory girl
   config.include FactoryGirl::Syntax::Methods
+  # Configure Devise helpers
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+
+  # Configure Shoulda-matchers
+  Shoulda::Matchers.configure do |c|
+    c.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end

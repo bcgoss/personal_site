@@ -19,6 +19,7 @@ describe 'Posts' do
   context 'user' do
     it 'can create a new post' do
       owner = create :user
+      sign_in owner
       visit posts_path
 
       click_link 'New post'
