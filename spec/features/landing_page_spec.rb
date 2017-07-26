@@ -19,4 +19,21 @@ describe 'Landing Page' do
       expect(page).to have_content 'Project 1' 
     end
   end
+
+  context 'member' do
+    before :each do
+      @member = create :user
+      sign_in @member
+    end
+
+    it 'creates a new blog post' do
+    pending 'Impliment New'
+      expect(0).to eq 1
+    end
+
+    it 'update existing posts' do
+  pending 'Impliment Update'
+      expect(0).to eq 1
+    end
+  end
 end

@@ -15,4 +15,21 @@ describe 'Posts' do
       expect(page).to have_content 'This is a blog post' 
     end
   end
+
+  context 'user' do
+    it 'can create a new post' do
+      owner = create :user
+      sign_in owner
+      visit posts_path
+
+      click_link 'New post'
+      fill_in 'Title', with: 'New title'
+      fill_in 'Body', with: 'This is a post' 
+
+      click_button 'Create Post'
+
+      expect(page).to have_content 'New title'
+      expect(page).to have_content 'This is a post'
+    end
+  end
 end
