@@ -10,6 +10,7 @@ describe 'Landing Page' do
 
     it 'can see links to public content' do
       visit root_path
+      expect(page).to have_link 'Sign in'
 
       click_link 'Blog posts'
       expect(page).to have_content 'First Post'
@@ -24,16 +25,6 @@ describe 'Landing Page' do
     before :each do
       @member = create :user
       sign_in @member
-    end
-
-    it 'creates a new blog post' do
-    pending 'Impliment New'
-      expect(0).to eq 1
-    end
-
-    it 'update existing posts' do
-  pending 'Impliment Update'
-      expect(0).to eq 1
     end
   end
 end

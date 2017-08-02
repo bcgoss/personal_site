@@ -21,6 +21,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    if @post.update_attributes(post_params)
+      redirect_to post_path(@post)
+    else
+      flash[:error] = @post.errors.full_messages.join('. ')
+      render :edit
+    end
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :body)
